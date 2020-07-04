@@ -225,16 +225,16 @@ player_most_points =
 
       game_hash.each do |location, team_info|
         team_info[:players].each do |player_info|
-          starting_point = player_info[:points]
+          player_point = player_info[:points]
           starting_point == nil
           if starting_point == nil
-            starting_point = 
-            rebound_num = player_info[:rebounds]
-          elsif starting_size < shoe_size
-            starting_size = shoe_size
-            rebound_num = player_info[:rebounds]
+            starting_point = player_point
+            player_most_points = player_info[:player_name]
+          elsif starting_point < player_point
+            starting_point = player_point
+            player_most_points = player_info[:player_name]
           end
         end
-        return rebound_num
+        return player_most_points
       end
   end
